@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Resolution Desk</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f172a, #3b132e, #0f172a);
+            background-size: 200% 200%;
+            animation: gradientBG 12s ease infinite;
+            color: #f8fafc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            touch-action: manipulation;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        .screen {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+            transform: translateY(10px);
+        }
+        .screen.active {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .btn-dodge {
+            position: relative;
+            transition: all 0.2s ease;
+        }
+    </style>
+</head>
+<body class="h-screen w-screen flex items-center justify-center p-5 text-center">
+
+    <!-- Screen 1: Landing -->
+    <div id="screen-1" class="screen active flex-col items-center max-w-md w-full glass-card p-8">
+        <h1 class="text-3xl font-bold mb-4 tracking-wide text-pink-300">Official Prom Negotiation Portal</h1>
+        <p class="text-gray-200 mb-8 leading-relaxed">Because "itni easily thodi bataungi" is just stalling, and we both know it.</p>
+        <button onclick="nextScreen(2)" class="bg-white text-gray-900 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition">Begin Negotiations</button>
+    </div>
+
+    <!-- Screen 2: Intro -->
+    <div id="screen-2" class="screen flex-col items-center max-w-md w-full glass-card p-8">
+        <h2 class="text-2xl font-bold mb-4 text-pink-300">The Context</h2>
+        <p class="text-gray-200 mb-8 leading-relaxed">It’s been five months since the dimple compliment. We’ve navigated the radio silence, the weird hot-and-cold phases, and that one marathon walk around campus.<br><br>It hasn't been a straight line, but those random little meetings have easily been my favorite part of the last few months. Since good things shouldn't come too easily, it's time to formally lay down your terms. But first, the pitch.</p>
+        <button onclick="nextScreen(3)" class="border border-white/30 px-6 py-2 rounded-full hover:bg-white/10 transition">Hear me out →</button>
+    </div>
+
+    <!-- Screen 3: Pitch 1 -->
+    <div id="screen-3" class="screen flex-col items-center max-w-md w-full glass-card p-8">
+        <h2 class="text-2xl font-bold mb-4 text-pink-300">1. The Official SIP Good-Luck Charm</h2>
+        <p class="text-gray-200 mb-8 leading-relaxed">My track record speaks for itself, my entire circle has already secured their placements. Hanging out with me is basically a confirmed SIP.</p>
+        <button onclick="nextScreen(4)" class="border border-white/30 px-6 py-2 rounded-full hover:bg-white/10 transition">Strong start →</button>
+    </div>
+
+    <!-- Screen 4: Pitch 2 -->
+    <div id="screen-4" class="screen flex-col items-center max-w-md w-full glass-card p-8">
+        <h2 class="text-2xl font-bold mb-4 text-pink-300">2. Bandwidth Carrier</h2>
+        <p class="text-gray-200 mb-8 leading-relaxed">Fully equipped to carry 90% of the conversation. Since you prefer the quiet side, I can comfortably run the dialogue. I have more than enough energy to keep the conversation alive while you just relax and vibe.</p>
+        <button onclick="nextScreen(5)" class="border border-white/30 px-6 py-2 rounded-full hover:bg-white/10 transition">Highly practical →</button>
+    </div>
+
+    <!-- Screen 5: Pitch 3 -->
+    <div id="screen-5" class="screen flex-col items-center max-w-md w-full glass-card p-8">
+        <h2 class="text-2xl font-bold mb-4 text-pink-300">3. Premium Audio Entertainment</h2>
+        <p class="text-gray-200 mb-8 leading-relaxed">Not to brag, but between taking first place at ZEST and having my own singles on Spotify, you are essentially getting escorted by a verified artist.</p>
+        <button onclick="nextScreen(6)" class="border border-white/30 px-6 py-2 rounded-full hover:bg-white/10 transition">A slight flex →</button>
+    </div>
+
+    <!-- Screen 6: Pitch 4 -->
+    <div id="screen-6" class="screen flex-col items-center max-w-md w-full glass-card p-8">
+        <h2 class="text-2xl font-bold mb-4 text-pink-300">4. 5-Star Rating</h2>
+        <p class="text-gray-200 mb-8 leading-relaxed">Certified good guy. Thoroughly vetted and highly recommended. Feel free to run a background check with anyone from my friend groups - they are heavily biased and will blindly vouch for me.</p>
+        <button onclick="nextScreen(7)" class="border border-white/30 px-6 py-2 rounded-full hover:bg-white/10 transition">Let's pivot →</button>
+    </div>
+
+    <!-- Screen 7: Why You 1 -->
+    <div id="screen-7" class="screen flex-col items-center max-w-md w-full glass-card p-8">
+        <h2 class="text-2xl font-bold mb-4 text-pink-300">So, why you?</h2>
+        <p class="text-gray-200 mb-8 leading-relaxed">Aside from possessing a highly distracting dimple, you are the only person who can match my stubbornness in a five-month standoff. I have to respect the dedication.</p>
+        <button onclick="nextScreen(8)" class="border border-white/30 px-6 py-2 rounded-full hover:bg-white/10 transition">Fair point →</button>
+    </div>
+
+    <!-- Screen 8: Why You 2 -->
+    <div id="screen-8" class="screen flex-col items-center max-w-md w-full glass-card p-8">
+        <h2 class="text-2xl font-bold mb-4 text-pink-300">The Real Reason</h2>
+        <p class="text-gray-200 mb-8 leading-relaxed">That one time we roamed around campus for hours was actually top-tier. I figured it was time we officially upgraded the venue to an actual prom.</p>
+        <button onclick="nextScreen(9)" class="border border-white/30 px-6 py-2 rounded-full hover:bg-white/10 transition">Can't argue that →</button>
+    </div>
+
+    <!-- Screen 9: Why You 3 -->
+    <div id="screen-9" class="screen flex-col items-center max-w-md w-full glass-card p-8">
+        <h2 class="text-2xl font-bold mb-4 text-pink-300">The Effort</h2>
+        <p class="text-gray-200 mb-8 leading-relaxed">Why go through all this trouble? Because anyone who can make me wait and build an entire custom portal just to get a straight answer is definitely worth taking.</p>
+        <button onclick="nextScreen(10)" class="bg-white text-gray-900 px-6 py-2 rounded-full font-semibold hover:bg-gray-200 transition">Set Your Terms</button>
+    </div>
+
+    <!-- Screen 10: The Demands -->
+    <div id="screen-10" class="screen flex-col items-center max-w-md w-full glass-card p-8">
+        <h2 class="text-2xl font-bold mb-4 text-pink-300">The Demands</h2>
+        <p class="text-gray-200 mb-6 text-sm">Select your official price for a 'Yes'.</p>
+        <div class="flex flex-col gap-3 w-full">
+            <button onclick="nextScreen(11)" class="w-full text-left bg-white/10 border border-white/30 p-4 rounded-xl hover:bg-white/20 transition text-sm">
+                A) A signed confession that your dimple is an unfair advantage.
+            </button>
+            <button onclick="nextScreen(11)" class="w-full text-left bg-white/10 border border-white/30 p-4 rounded-xl hover:bg-white/20 transition text-sm">
+                B) An unlimited supply of chocolates and ghewar during our next campus walking tour.
+            </button>
+            <button onclick="nextScreen(11)" class="w-full text-left bg-white/10 border border-white/30 p-4 rounded-xl hover:bg-white/20 transition text-sm">
+                C) A highly classified, strictly off-the-record audio bribe.
+            </button>
+        </div>
+    </div>
+
+    <!-- Screen 11: The Audio Bribe -->
+    <div id="screen-11" class="screen flex-col items-center max-w-md w-full glass-card p-8">
+        <h2 class="text-2xl font-bold mb-2 text-pink-300">Request Logged.</h2>
+        <p class="text-gray-200 mb-6 text-sm">Regardless of what you selected, I am going to go ahead and play Option C anyway.</p>
+        
+        <audio id="bribe-audio" controls class="w-full mb-8 rounded-lg outline-none custom-audio">
+            <source src="bribe.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+        <button onclick="nextScreen(12)" class="bg-white text-gray-900 px-6 py-2 rounded-full font-semibold hover:bg-gray-200 transition w-full">Final Verdict →</button>
+    </div>
+
+    <!-- Screen 12: The Verdict -->
+    <div id="screen-12" class="screen flex-col items-center max-w-md w-full glass-card p-8">
+        <h2 class="text-3xl font-bold mb-4 text-pink-300">The Verdict</h2>
+        <p class="text-gray-200 mb-8 leading-relaxed">The suspense phase is officially over. My plans lock in 48 hours from now. Are we doing this?</p>
+        
+        <div class="flex gap-4 w-full justify-center h-32 relative items-start mt-4">
+            <a href="https://wa.me/919582384686?text=Fine,%20negotiations%20accepted.%20I'm%20in.%20💃" target="_blank" class="bg-pink-600 text-white px-8 py-3 rounded-full font-bold hover:bg-pink-500 transition shadow-lg z-10">
+                Yes, obviously
+            </a>
+            
+            <button id="btn-no" onmouseover="dodgeButton()" onclick="dodgeButton()" ontouchstart="dodgeButton()" class="btn-dodge border border-white/40 text-white px-8 py-3 rounded-full hover:bg-red-500/50 transition">
+                No, I hate fun
+            </button>
+        </div>
+    </div>
+
+    <audio id="bg-audio" loop>
+        <source src="bg-music.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="verdict-audio" loop>
+        <source src="verdict.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        function nextScreen(screenNumber) {
+            document.querySelectorAll('.screen').forEach(el => {
+                el.classList.remove('active');
+            });
+
+            const bgAudio = document.getElementById('bg-audio');
+            const verdictAudio = document.getElementById('verdict-audio');
+            const bribeAudio = document.getElementById('bribe-audio');
+
+            if (screenNumber === 2) {
+                bgAudio.volume = 0.5;
+                bgAudio.play().catch(e => console.log("Audio blocked until interaction"));
+            } 
+            else if (screenNumber === 11) {
+                bgAudio.pause();
+            } 
+            else if (screenNumber === 12) {
+                if (bribeAudio) bribeAudio.pause();
+                verdictAudio.volume = 0.8;
+                verdictAudio.play().catch(e => console.log("Audio blocked"));
+            }
+
+            setTimeout(() => {
+                document.getElementById('screen-' + screenNumber).classList.add('active');
+            }, 50);
+        }
+
+        function dodgeButton() {
+            const btn = document.getElementById('btn-no');
+            const randomX = Math.floor(Math.random() * 200) - 100;
+            const randomY = Math.floor(Math.random() * 150) - 75;
+            btn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+        }
+    </script>
+</body>
+</html>
